@@ -3,48 +3,57 @@ public class HelloExceptions {
 
 	public static void main(String[] args) {
 		int a = 10, b = 6, c;
-		
-		
 
-		if (a > b){
-			throw new ArithmeticException("We have a problem.");
-		}
-		
-		//ArithmeticException ae = new ArithmeticException("We have a problem.");
+//		if (a > b) {
+//			throw new ArithmeticException("We have a problem.");
+//		}
+
+		// ArithmeticException ae = new ArithmeticException("We have a
+		// problem.");
 		/*
 		 * Throw this exception and the rest of the code will not run!
 		 */
-		//throw ae;
+		// throw ae;
 
 		// a = b / 0;
 		System.out.println("in main");
-		foo();
+		try {
+			foo();
+		} catch (CustomerRecordsMissingEx crme) {
+			System.out.println(crme.getMessage());
+		}
+
 		System.out.println("didn't get here");
 
 	}
 
-	private static void foo() {
+	private static void foo() throws CustomerRecordsMissingEx {
+
+		if (10 > 5) {
+			throw new CustomerRecordsMissingEx("I'm in foo with an important message");
+		}
+
 		System.out.println("In foo");
-		
-		try{
+
+		try {
 			foo2();
-		} catch (ArithmeticException ae){
+		} catch (ArithmeticException ae) {
 			System.out.println("Dealing with a problem!");
-		} catch (Exception e){
+		} catch (Exception e) {
 			System.out.println("Another problem???");
 		} finally {
 			System.out.println("I will always happen!!!!!!");
 		}
-		
+
 		System.out.println("didn't get here");
 	}
 
-	private static void foo2() throws ArithmeticException{
+	private static void foo2() throws ArithmeticException {
 		int e = 45;
 		System.out.println("in foo2");
-		
-			e = 1 / 0;
-		
+
+		e = 1 / 0;
+
 		System.out.println("didn't get here");
 	}
 

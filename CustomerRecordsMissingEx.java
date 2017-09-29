@@ -1,9 +1,8 @@
 
-public class CustomerRecordsMissingEx {
+public class CustomerRecordsMissingEx extends Exception{
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public CustomerRecordsMissingEx(String message){
+		super(message);
 	}
-
+ 
 }
